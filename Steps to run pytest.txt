@@ -1,0 +1,33 @@
+Go to the folder where are the test_*.py files
+Run
+	First method
+		 pytest <test_sample.py>
+
+	To run all tests
+		python -m pytest
+	or
+		py.test
+	or
+		pytest
+
+	To run all tests and to increase verbosity
+		pytest -v
+		
+	Give us more details on the test 
+		pytest -v -rxs <filename>
+
+	To run an specific test_method inside the test file
+		pytest <filename> -v -rxs -k <method>
+	Ex
+		pytest test_skipdemo.py -v -rxs -k demo_3
+
+	To get an htmle report
+		pytest --html=reports/report1.html
+		pytest --html=reports/report1.html --self-contained-html	 
+	
+	To get allure reports
+		pytest --alluredir=<directory path>
+	and generate the report
+		allure serve <directory path>
+	if previous instruction does not work, run and try it again
+		npm install -g allure-commandline --save-dev

@@ -1,0 +1,69 @@
+conda create --prefix ./envSelenium python pandas numpy matplotlib seaborn jupyter pytest
+conda activate .\envSelenium
+
+pip install -U selenium
+pip install webdriver-manager
+pip install pytest-html
+
+pip install allure-pytest
+npm install -g allure-commandline --save-dev
+
+conda env export --prefix .\envSelenium\ > environment.yml
+pip freeze >> requirements.txt
+
+pip list
+
+pip show selenium
+pip check selenium 
+# Validate version (show) and no conflict with dependencies (check).
+
+# To install jenkins
+download jenkinst
+java -jar jenkins.war --httpPort=9191
+
+
+
+# To reinstall once uninstall and make download start again, no cache
+pip install -U --no-cache-dir selenium
+
+# To run unittest without line if __name__ == '__main__':
+python -m unittest <name of the file>
+
+# To run unittest with line if __name__ == '__main__':
+python <name of the file>
+
+# To configure pytest in pycharm
+1. Go to menu: File --> Settings
+2. Python integrated tools
+3. Set Testing --> Default test runner = Unittests
+4. Apply
+5. Ok
+
+Then in pycharm
+- Go to folder
+- Right click with the mouse and select Run unittests on folder 
+
+# To record the tests
+Katalon Recorder (Selenium tests generator)
+https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid?hl=en
+---------------------------------------------------------------------------------
+
+# To fix the issue with HTMLReports
+AttributeError: 'HtmlTestResult' object has no attribute '_count_relevant_tb_levels'. Did you mean: '_is_relevant_tb_level'?
+This works for me. Apparently the "_count_relevant_tb_levels" is not available in the newest versions, so you need to go to the source code of the HtmlTestRunner package.
+1. Go to HtmlTestRunner folder of the package: 
+   ...\envSelenium\Lib\site-packages\HtmlTestRunner\result.py
+2. Look for result.py
+3. Find the "_exc_info_to_string" method of the "HtmlTestResult" class.
+4. Replace these lines:
+
+ if exctype is test.failureException:
+     # Skip assert*() traceback levels
+     length = self._count_relevant_tb_levels(tb)
+     msg_lines = traceback.format_exception(exctype, value, tb, length)
+
+with
+
+    if exctype is test.failureException:
+        # Skip assert*() traceback levels
+        msg_lines = traceback.format_exception(exctype, value, tb)
