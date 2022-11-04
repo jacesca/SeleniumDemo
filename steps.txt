@@ -23,6 +23,7 @@ download jenkinst
 java -jar jenkins.war --httpPort=9191 --enable-future-java
 user: admin
 pwd: qwe
+add a pluguin for build pipeline
 
 # To reinstall once uninstall and make download start again, no cache
 pip install -U --no-cache-dir selenium
