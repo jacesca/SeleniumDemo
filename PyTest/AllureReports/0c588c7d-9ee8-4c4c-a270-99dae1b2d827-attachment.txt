@@ -1,0 +1,5 @@
+Assertion error occurred!
+assert 'OrangeHRM' == 'abc'
+  - abc
+  + OrangeHRM
+test_logout completed!

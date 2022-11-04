@@ -4,6 +4,7 @@ conda activate .\envSelenium
 pip install -U selenium
 pip install webdriver-manager
 pip install pytest-html
+pip install -U moment
 
 pip install allure-pytest
 npm install -g allure-commandline --save-dev
@@ -19,9 +20,9 @@ pip check selenium
 
 # To install jenkins
 download jenkinst
-java -jar jenkins.war --httpPort=9191
-
-
+java -jar jenkins.war --httpPort=9191 --enable-future-java
+user: admin
+pwd: qwe
 
 # To reinstall once uninstall and make download start again, no cache
 pip install -U --no-cache-dir selenium
